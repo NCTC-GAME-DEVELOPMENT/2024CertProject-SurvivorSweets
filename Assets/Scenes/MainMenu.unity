@@ -286,7 +286,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -1978,8 +1978,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4241132836152086580}
   - component: {fileID: 1212689482279263618}
-  - component: {fileID: 6583120180554503975}
-  - component: {fileID: 6501128435554328242}
   - component: {fileID: 1681346454066542285}
   m_Layer: 0
   m_Name: chef
@@ -1988,24 +1986,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &6501128435554328242
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6429528634487062323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39cb578f6fc75924896f8bb2a15a7eda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IsAI: 0
-  IsHuman: 1
-  InputPlayerNumber: 1
-  PlayerNumber: 1
-  LogInputStateInfo: 1
-  MyPawn: {fileID: 6429528634487062323}
 --- !u!1 &6527466926011556851
 GameObject:
   m_ObjectHideFlags: 0
@@ -2022,25 +2002,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &6583120180554503975
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6429528634487062323}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c29bb0930f0cb4544a00abf15dca7bab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  IgnoresDamage: 1
-  LogDamageEvents: 1
-  IsSpectator: 0
-  StartingHealth: 100
-  Health: 100
-  MoveSpeed: 10
-  rotationRate: 150
 --- !u!33 &6817394786915707616
 MeshFilter:
   m_ObjectHideFlags: 0
