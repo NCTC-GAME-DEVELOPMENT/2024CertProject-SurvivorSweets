@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,25 +12,25 @@ using UnityEngine.InputSystem;
 
 public class InputPoller : Info
 {
-    public static InputPoller Self;
+    public static InputPoller instance;
+    public event Action<Vector2> InputMovement;
 
     void Awake()
     {
-        if (Self != null)
+        if (instance != null)
         {
             // we have another instance of this system. 
             // the Solution here is to delete the other version 
-            Debug.LogWarning("Found another instance of InputPoller on " + Self.name);
-            Destroy(Self);
+            Debug.LogWarning("Found another instance of InputPoller on " + instance.name);
+            Destroy(instance);
         }
-        Self = this;
+        instance = this;
         DontDestroyOnLoad(gameObject);
     }
 
     // Update is called Self per frame
     void Update()
     {
-
     }
 
     public InputData GetInput(int PlayerNumber)
@@ -95,7 +96,10 @@ public class InputPoller : Info
 
         }
 
-
+        InputMovement?.Invoke(new Vector2 {
+            x = input.leftStick.x,
+            y = input.leftStick.y,
+        });
         return input;
     }
 

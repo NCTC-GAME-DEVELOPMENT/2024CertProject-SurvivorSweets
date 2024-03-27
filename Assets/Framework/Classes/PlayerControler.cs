@@ -19,7 +19,7 @@ public class PlayerController : Controller
         base.Start();
         IsHuman = true; 
 
-        inputPoller = InputPoller.Self; 
+        inputPoller = InputPoller.instance; 
         if (!inputPoller)
         {
             LOG_ERROR("****PLAYER CONTROLER: No Input Poller in Scene");
@@ -45,7 +45,7 @@ public class PlayerController : Controller
             return;
         }
         
-        InputCurrent = InputPoller.Self.GetInput(InputPlayerNumber);
+        InputCurrent = InputPoller.instance.GetInput(InputPlayerNumber);
 
         if (LogInputStateInfo)
         {
