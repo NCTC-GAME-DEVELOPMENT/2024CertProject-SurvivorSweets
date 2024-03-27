@@ -15,7 +15,16 @@ using UnityEngine.InputSystem;
 public class InputPoller : MonoBehaviourSingleton<InputPoller> 
 {
     public event Action<Vector2> InputMovement;
+    public InGameInput Input;
+    public void Awake() {
+        Input = new InGameInput();
+        Input.Enable();
+        Input.PlayerCharacacter.Enable();
+        Input.PlayerCharacacter.Movement.Enable();
+    }
     public void Update() {
+        //if (Input.PlayerCharacacter.Movement.triggered)
+        //InputMovement?.Invoke(Input.PlayerCharacacter.Movement.)
         GetInputP1();
     }
 
