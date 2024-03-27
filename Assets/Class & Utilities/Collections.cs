@@ -343,6 +343,10 @@ namespace Hiyazcool {
                 return values.GetEnumerator();
             }
         }
+        /// <summary>
+        /// A List with a Index that tracks the current selected Item
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
         [Serializable]
         public class CycleableList<T> : IList<T> {
             [SerializeField]
@@ -384,10 +388,17 @@ namespace Hiyazcool {
                     }
                 }
             }
+            /// <summary>
+            /// Increases the index by one, looping to the begining when reachingthe end of the list, and returns the newly selected object.
+            /// </summary>
+            /// <returns>Newly Selected Item</returns>
             public T Next() {
                 return this[++Index];
             }
-
+            /// <summary>
+            /// Decreases the index by one, looping tho the end when reaching the begining of the list, and returns the newly selected object.
+            /// </summary>
+            /// <returns>Newly Selected Item</returns>
             public T Previous() {
                 return this[--Index];
             }
