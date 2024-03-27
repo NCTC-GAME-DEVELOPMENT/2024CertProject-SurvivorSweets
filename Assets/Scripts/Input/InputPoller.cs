@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hiyazcool.Unity;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,28 +11,26 @@ using UnityEngine.InputSystem;
 // #2 : Keyboard input :: IJKL + UON>
 
 
-public class InputPoller : Info
+public class InputPoller : MonoBehaviourSingleton<InputPoller>
 {
     public static InputPoller instance;
     public event Action<Vector2> InputMovement;
 
-    void Awake()
-    {
-        if (instance != null)
-        {
-            // we have another instance of this system. 
-            // the Solution here is to delete the other version 
-            Debug.LogWarning("Found another instance of InputPoller on " + instance.name);
-            Destroy(instance);
-        }
-        instance = this;
-        DontDestroyOnLoad(gameObject);
+   public InGameInput InputAction;
+    public void Awake() {
+        InputAction = new InGameInput();
+        //InputAction.
     }
 
-    // Update is called Self per frame
-    void Update()
-    {
+    public void Update() {
+        GetInputP1();
     }
+
+
+
+
+
+
 
     public InputData GetInput(int PlayerNumber)
     {
