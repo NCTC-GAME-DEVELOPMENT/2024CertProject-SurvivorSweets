@@ -70,19 +70,19 @@ public class Info : MonoBehaviour
     /// <param name="s">String, Logged Text</param>
     public static void sLOG(string s)
     {
-        Debug.Log(s);
+        
     }
 
     public virtual void LOG(string s)
     {
-        Debug.Log(s);
+      
     }
 
    
 
     public void LOG_ERROR(string s)
     {
-        Debug.LogError(s);
+        
     }
 
 }
