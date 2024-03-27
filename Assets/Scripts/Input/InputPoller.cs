@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,17 +12,9 @@ using UnityEngine.InputSystem;
 // #2 : Keyboard input :: IJKL + UON>
 
 
-public class InputPoller : MonoBehaviourSingleton<InputPoller>
+public class InputPoller : MonoBehaviourSingleton<InputPoller> 
 {
-    public static InputPoller instance;
     public event Action<Vector2> InputMovement;
-
-   public InGameInput InputAction;
-    public void Awake() {
-        InputAction = new InGameInput();
-        //InputAction.
-    }
-
     public void Update() {
         GetInputP1();
     }
@@ -97,7 +90,11 @@ public class InputPoller : MonoBehaviourSingleton<InputPoller>
 
         InputMovement?.Invoke(new Vector2 {
             x = input.leftStick.x,
-            y = input.leftStick.y,
+            y = input.leftStick.y
+        });
+        Debug.Log("Input Poller" + new Vector2 {
+            x = input.leftStick.x,
+            y = input.leftStick.y
         });
         return input;
     }
