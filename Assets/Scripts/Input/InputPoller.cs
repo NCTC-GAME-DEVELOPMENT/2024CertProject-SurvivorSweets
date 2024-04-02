@@ -101,10 +101,10 @@ public class InputPoller : MonoBehaviourSingleton<InputPoller>
             x = input.leftStick.x,
             y = input.leftStick.y
         });
-        Debug.Log("Input Poller" + new Vector2 {
-            x = input.leftStick.x,
-            y = input.leftStick.y
-        });
+        //Debug.Log("Input Poller" + new Vector2 {
+        //    x = input.leftStick.x,
+        //    y = input.leftStick.y
+        //});
         return input;
     }
 

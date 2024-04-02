@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,4 +14,6 @@ public interface IHealth {
     /// <param name="timeInSeconds">Time to have damage span over in seconds</param>
     public void DoDamageOverTime(float value, float timeInSeconds);
     public void SetHealth(float value);
+    public bool IsAlive();
+    public Action GetOnDeathEvent();
 }
