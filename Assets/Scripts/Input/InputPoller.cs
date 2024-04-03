@@ -17,12 +17,16 @@ public class InputPoller : MonoBehaviourSingleton<InputPoller>
     [SerializeField]
     public Action<Vector2> InputMovement;
     public InGameInput Input;
-    public void Awake() {
+    protected override void Awake() {
         base.Awake();
         Input = new InGameInput();
         Input.Enable();
         Input.PlayerCharacacter.Enable();
         Input.PlayerCharacacter.Movement.Enable();
+        Input.PlayerCharacacter.WeaponNext.Enable();
+        Input.PlayerCharacacter.WeaponPrevious.Enable();
+        Input.PlayerCharacacter.Attack.Enable();
+        
     }
     public void Update() {
         //if (Input.PlayerCharacacter.Movement.triggered)
@@ -32,7 +36,7 @@ public class InputPoller : MonoBehaviourSingleton<InputPoller>
 
 
 
-
+    
 
 
 

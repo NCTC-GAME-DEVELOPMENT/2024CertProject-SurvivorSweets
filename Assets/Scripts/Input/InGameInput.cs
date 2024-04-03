@@ -35,6 +35,33 @@ public partial class @InGameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""8ceb738c-ffbc-46a2-8bae-5a02a686bf05"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponNext"",
+                    ""type"": ""Button"",
+                    ""id"": ""435c3fda-ae3c-4fa5-b13c-b00e09a340f8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WeaponPrevious"",
+                    ""type"": ""Button"",
+                    ""id"": ""84793be7-f6a6-449d-b950-30b99f532c03"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -147,6 +174,39 @@ public partial class @InGameInput: IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""70068fb0-0785-43a1-910e-f36f1ab24f09"",
+                    ""path"": ""<Mouse>/press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cbb2bdd1-f3fa-4a10-8203-d9335efe4463"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponNext"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9011d8c4-345c-4a03-b277-9d762c871025"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""WeaponPrevious"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -156,6 +216,9 @@ public partial class @InGameInput: IInputActionCollection2, IDisposable
         // PlayerCharacacter
         m_PlayerCharacacter = asset.FindActionMap("PlayerCharacacter", throwIfNotFound: true);
         m_PlayerCharacacter_Movement = m_PlayerCharacacter.FindAction("Movement", throwIfNotFound: true);
+        m_PlayerCharacacter_Attack = m_PlayerCharacacter.FindAction("Attack", throwIfNotFound: true);
+        m_PlayerCharacacter_WeaponNext = m_PlayerCharacacter.FindAction("WeaponNext", throwIfNotFound: true);
+        m_PlayerCharacacter_WeaponPrevious = m_PlayerCharacacter.FindAction("WeaponPrevious", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -218,11 +281,17 @@ public partial class @InGameInput: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_PlayerCharacacter;
     private List<IPlayerCharacacterActions> m_PlayerCharacacterActionsCallbackInterfaces = new List<IPlayerCharacacterActions>();
     private readonly InputAction m_PlayerCharacacter_Movement;
+    private readonly InputAction m_PlayerCharacacter_Attack;
+    private readonly InputAction m_PlayerCharacacter_WeaponNext;
+    private readonly InputAction m_PlayerCharacacter_WeaponPrevious;
     public struct PlayerCharacacterActions
     {
         private @InGameInput m_Wrapper;
         public PlayerCharacacterActions(@InGameInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_PlayerCharacacter_Movement;
+        public InputAction @Attack => m_Wrapper.m_PlayerCharacacter_Attack;
+        public InputAction @WeaponNext => m_Wrapper.m_PlayerCharacacter_WeaponNext;
+        public InputAction @WeaponPrevious => m_Wrapper.m_PlayerCharacacter_WeaponPrevious;
         public InputActionMap Get() { return m_Wrapper.m_PlayerCharacacter; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -235,6 +304,15 @@ public partial class @InGameInput: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
+            @WeaponNext.started += instance.OnWeaponNext;
+            @WeaponNext.performed += instance.OnWeaponNext;
+            @WeaponNext.canceled += instance.OnWeaponNext;
+            @WeaponPrevious.started += instance.OnWeaponPrevious;
+            @WeaponPrevious.performed += instance.OnWeaponPrevious;
+            @WeaponPrevious.canceled += instance.OnWeaponPrevious;
         }
 
         private void UnregisterCallbacks(IPlayerCharacacterActions instance)
@@ -242,6 +320,15 @@ public partial class @InGameInput: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
+            @WeaponNext.started -= instance.OnWeaponNext;
+            @WeaponNext.performed -= instance.OnWeaponNext;
+            @WeaponNext.canceled -= instance.OnWeaponNext;
+            @WeaponPrevious.started -= instance.OnWeaponPrevious;
+            @WeaponPrevious.performed -= instance.OnWeaponPrevious;
+            @WeaponPrevious.canceled -= instance.OnWeaponPrevious;
         }
 
         public void RemoveCallbacks(IPlayerCharacacterActions instance)
@@ -262,5 +349,8 @@ public partial class @InGameInput: IInputActionCollection2, IDisposable
     public interface IPlayerCharacacterActions
     {
         void OnMovement(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
+        void OnWeaponNext(InputAction.CallbackContext context);
+        void OnWeaponPrevious(InputAction.CallbackContext context);
     }
 }

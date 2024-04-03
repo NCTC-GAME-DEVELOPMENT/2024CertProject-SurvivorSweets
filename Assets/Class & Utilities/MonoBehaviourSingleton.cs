@@ -9,7 +9,7 @@ namespace Hiyazcool
             [SerializeField]
             private bool debugLogCreation = false;
             public static T instance { get; protected set; }
-            protected void Awake()
+            protected virtual void Awake()
             {
                 if (debugLogCreation)
                     Debug.Log("Creating");
