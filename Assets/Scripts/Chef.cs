@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Chef : MonoBehaviour
 {
+    public List<GameObject> WeaponList;
+    public int WeaponIndex = 0;
     public float MoveSpeed = 10;
     public float rotationRate = 100;
+    public GameObject CurrentWeapon;
 
     Rigidbody rb;
 
@@ -13,6 +17,10 @@ public class Chef : MonoBehaviour
     void Start()
     {
         InputPoller.instance.InputMovement += Movement;
+
+        rb = GetComponent<Rigidbody>();
+        InputPoller.instance.Input.PlayerCharacacter.WeaponNext.performed += NextWeapon;
+        InputPoller.instance.Input.PlayerCharacacter.WeaponPrevious.performed += PrevWeapon;
     }
 
     // Update is called once per frame
@@ -38,4 +46,36 @@ public class Chef : MonoBehaviour
         }
 
     }
+
+    public void NextWeapon(InputAction.CallbackContext context)
+    {
+        WeaponIndex++;
+        if (WeaponIndex >= WeaponList.Count)
+        {
+            WeaponIndex = 0;
+        }
+
+        Destroy(CurrentWeapon);
+
+        CurrentWeapon = GameObject.Instantiate(WeaponList[WeaponIndex],this.transform);
+
+
+
+
+    }
+    public void PrevWeapon(InputAction.CallbackContext context)
+    {
+        WeaponIndex--;
+        if (WeaponIndex < 0)
+        {
+            WeaponIndex = (WeaponList.Count - 1);
+        }
+
+        
+
+        Destroy(CurrentWeapon);
+
+        CurrentWeapon = GameObject.Instantiate(WeaponList[WeaponIndex], this.transform);
+    }
+
 }
