@@ -351,6 +351,7 @@ namespace Hiyazcool {
         public class CycleableList<T> : IList<T> {
             [SerializeField]
             private List<T> list;
+            [SerializeField]
             private int index;
             public int Index {
                 get => index;
@@ -388,17 +389,10 @@ namespace Hiyazcool {
                     }
                 }
             }
-            /// <summary>
-            /// Increases the index by one, looping to the begining when reachingthe end of the list, and returns the newly selected object.
-            /// </summary>
-            /// <returns>Newly Selected Item</returns>
             public T Next() {
                 return this[++Index];
             }
-            /// <summary>
-            /// Decreases the index by one, looping tho the end when reaching the begining of the list, and returns the newly selected object.
-            /// </summary>
-            /// <returns>Newly Selected Item</returns>
+
             public T Previous() {
                 return this[--Index];
             }
@@ -461,54 +455,22 @@ namespace Hiyazcool {
                 Foldout foldout = UIToolkitUtils.CreatePropertyFoldout(property);
                 SerializedProperty listProperty = property.FindPropertyRelative("list");
                 Label selection;
-                List<PropertyField> listChildren = new List<PropertyField>();
                 if (listProperty?.arraySize > 0) {
+                    int index = property.FindPropertyRelative("index").intValue;
                     selection = new Label {
                         text =
                        "Current Selection: " +
-                           listProperty.GetArrayElementAtIndex(
-                               0).name
+                           listProperty.GetArrayElementAtIndex(index
+                               ).displayName
                     };
-                    foreach (SerializedProperty item in listProperty) {
-                        
-                        listChildren.Add(UIToolkitUtils.CreatePropertyField(item));
-                    }
-                    Debug.Log("Array is not Empty");
                 } else {
                     selection = new Label {
                         text = " Current Selection : NULL"
                     };
-                    Debug.Log("Array is Empty");
                 }
                 foldout.Add(selection);
-                ScrollView listView = new ScrollView(ScrollViewMode.Vertical);
-                GroupBox groupBox =  new GroupBox("Test Label");
-                foreach (PropertyField item in listChildren) {
-                    listView.Add(item);
-                    item.tooltip = "Something";
-                    //foldout.Add(item);
-                    //groupBox.Add(item);
-                }
-                foldout.Add(listView);
+                foldout.Add(new PropertyField(listProperty));
                 return foldout;
-                //foldout.Add(groupBox);
-                //var radiogroup = new RadioButtonGroup("Options", new List<string> { "Option 1", "Option 2", "Option 3", "Option 4" });
-                //radiogroup.RegisterValueChangedCallback(evt => Debug.Log(evt.newValue));
-                //var toolbarButton = new ToolbarButton(() => { Debug.Log("Button clicked"); }) { text = "Click me" };
-                //foldout.Add(radiogroup);
-                //var toolbar = new Toolbar();
-                //var button = new ToolbarButton(() => { Debug.Log("Button clicked2"); }) { text = "Click me2" };
-                //toolbar.Add(button);
-                //toolbar.Add(toolbarButton);
-                //toolbar.Add(new ToolbarToggle() { text = "Toggle me" });
-                //foldout.Add(toolbar);
-
-                
-                //Func<VisualElement> makeItem = () => new PropertyField();
-                //Action<VisualElement, int> bindItem = (element, i) => { element.tooltip = listChildren[i].tooltip; };
-                //ListView listView = new ListView(listChildren, 40 ,makeItem,bindItem);
-
-                //foldout.Add(base.CreatePropertyGUI(property));
 
             }
         }
