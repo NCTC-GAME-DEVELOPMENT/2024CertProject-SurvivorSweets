@@ -37,7 +37,7 @@ public class EnemyController : MonoBehaviour
 
         Action<float> navEvent = navigationComponent.GetOnDistanceUpdate();
         navEvent += attackComponent.UpdateDistanceToTarget;
-
+        navigationComponent.SubscribeToOnDistanceUpdate(attackComponent.UpdateDistanceToTarget);
             
     }
     public void Something(float dsitance) {

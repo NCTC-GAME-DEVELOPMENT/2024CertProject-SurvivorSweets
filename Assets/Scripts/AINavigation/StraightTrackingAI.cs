@@ -14,19 +14,19 @@ public class StraightTrackingAI : MonoBehaviour, INavigation {
     void Start() {
         //OnDistanceUpdate = new Action<float>(OnDistanceUpdate);
         Agent = GetComponent<NavMeshAgent>();
-        if (TargetTransform is null) {
+        
             TargetTransform = GameObject.FindGameObjectWithTag("Player").transform;
+            Debug.Log("Finding Player");
             if (TargetTransform is null) {
                 throw new System.Exception("No Target, or Player for " + this.gameObject.name);
             }
-        }
+        
         Agent.stoppingDistance = 3;
         StartCoroutine(CheckTarget());
     }
     public IEnumerator CheckTarget() {
         Agent.SetDestination(TargetTransform.position);
         OnDistanceUpdate?.Invoke(Vector3.Distance(Agent.transform.position, TargetTransform.position));
-        Debug.Log("Update Distace");
         yield return new WaitForSeconds(CHECK_TARGET_WAIT);
         StartCoroutine(CheckTarget());
     }

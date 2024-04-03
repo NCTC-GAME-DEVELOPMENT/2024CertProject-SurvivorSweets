@@ -6,9 +6,13 @@ namespace Hiyazcool
         public class MonoBehaviourSingleton<T> : MonoBehaviour where T : MonoBehaviourSingleton<T>
         {
             protected bool isPersistent = true;
+            [SerializeField]
+            private bool debugLogCreation = false;
             public static T instance { get; protected set; }
-            void Awake()
+            protected void Awake()
             {
+                if (debugLogCreation)
+                    Debug.Log("Creating");
                 if (instance != null && instance != this)
                 {
                     Destroy(this);

@@ -14,9 +14,11 @@ using UnityEngine.InputSystem;
 
 public class InputPoller : MonoBehaviourSingleton<InputPoller> 
 {
-    public event Action<Vector2> InputMovement;
+    [SerializeField]
+    public Action<Vector2> InputMovement;
     public InGameInput Input;
     public void Awake() {
+        base.Awake();
         Input = new InGameInput();
         Input.Enable();
         Input.PlayerCharacacter.Enable();
