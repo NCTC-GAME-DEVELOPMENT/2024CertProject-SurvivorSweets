@@ -62,6 +62,24 @@ public partial class @InGameInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""599e99b7-d385-4a2f-907b-c89996c0244b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Ability"",
+                    ""type"": ""Button"",
+                    ""id"": ""beb729c9-368f-4c8e-a6cd-d52d525aa455"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -207,6 +225,28 @@ public partial class @InGameInput: IInputActionCollection2, IDisposable
                     ""action"": ""WeaponPrevious"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ce2a92df-472c-4339-9ac1-b7d53ea6b9a0"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd18aa6d-0bdf-451c-b215-f36cc8e93269"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Ability"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -219,6 +259,8 @@ public partial class @InGameInput: IInputActionCollection2, IDisposable
         m_PlayerCharacacter_Attack = m_PlayerCharacacter.FindAction("Attack", throwIfNotFound: true);
         m_PlayerCharacacter_WeaponNext = m_PlayerCharacacter.FindAction("WeaponNext", throwIfNotFound: true);
         m_PlayerCharacacter_WeaponPrevious = m_PlayerCharacacter.FindAction("WeaponPrevious", throwIfNotFound: true);
+        m_PlayerCharacacter_Menu = m_PlayerCharacacter.FindAction("Menu", throwIfNotFound: true);
+        m_PlayerCharacacter_Ability = m_PlayerCharacacter.FindAction("Ability", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -284,6 +326,8 @@ public partial class @InGameInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerCharacacter_Attack;
     private readonly InputAction m_PlayerCharacacter_WeaponNext;
     private readonly InputAction m_PlayerCharacacter_WeaponPrevious;
+    private readonly InputAction m_PlayerCharacacter_Menu;
+    private readonly InputAction m_PlayerCharacacter_Ability;
     public struct PlayerCharacacterActions
     {
         private @InGameInput m_Wrapper;
@@ -292,6 +336,8 @@ public partial class @InGameInput: IInputActionCollection2, IDisposable
         public InputAction @Attack => m_Wrapper.m_PlayerCharacacter_Attack;
         public InputAction @WeaponNext => m_Wrapper.m_PlayerCharacacter_WeaponNext;
         public InputAction @WeaponPrevious => m_Wrapper.m_PlayerCharacacter_WeaponPrevious;
+        public InputAction @Menu => m_Wrapper.m_PlayerCharacacter_Menu;
+        public InputAction @Ability => m_Wrapper.m_PlayerCharacacter_Ability;
         public InputActionMap Get() { return m_Wrapper.m_PlayerCharacacter; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -313,6 +359,12 @@ public partial class @InGameInput: IInputActionCollection2, IDisposable
             @WeaponPrevious.started += instance.OnWeaponPrevious;
             @WeaponPrevious.performed += instance.OnWeaponPrevious;
             @WeaponPrevious.canceled += instance.OnWeaponPrevious;
+            @Menu.started += instance.OnMenu;
+            @Menu.performed += instance.OnMenu;
+            @Menu.canceled += instance.OnMenu;
+            @Ability.started += instance.OnAbility;
+            @Ability.performed += instance.OnAbility;
+            @Ability.canceled += instance.OnAbility;
         }
 
         private void UnregisterCallbacks(IPlayerCharacacterActions instance)
@@ -329,6 +381,12 @@ public partial class @InGameInput: IInputActionCollection2, IDisposable
             @WeaponPrevious.started -= instance.OnWeaponPrevious;
             @WeaponPrevious.performed -= instance.OnWeaponPrevious;
             @WeaponPrevious.canceled -= instance.OnWeaponPrevious;
+            @Menu.started -= instance.OnMenu;
+            @Menu.performed -= instance.OnMenu;
+            @Menu.canceled -= instance.OnMenu;
+            @Ability.started -= instance.OnAbility;
+            @Ability.performed -= instance.OnAbility;
+            @Ability.canceled -= instance.OnAbility;
         }
 
         public void RemoveCallbacks(IPlayerCharacacterActions instance)
@@ -352,5 +410,7 @@ public partial class @InGameInput: IInputActionCollection2, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnWeaponNext(InputAction.CallbackContext context);
         void OnWeaponPrevious(InputAction.CallbackContext context);
+        void OnMenu(InputAction.CallbackContext context);
+        void OnAbility(InputAction.CallbackContext context);
     }
 }

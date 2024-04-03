@@ -34,12 +34,11 @@ public class EnemyController : MonoBehaviour
                 throw new Exception("Something");
             }
         }
-
-        Action<float> navEvent = navigationComponent.GetOnDistanceUpdate();
-        navEvent += attackComponent.UpdateDistanceToTarget;
+        healthComponent.SubscribeToOnDeath(Death);
         navigationComponent.SubscribeToOnDistanceUpdate(attackComponent.UpdateDistanceToTarget);
             
     }
-    public void Something(float dsitance) {
+    public void Death() {
+        this.gameObject.SetActive(false);
     }
 }

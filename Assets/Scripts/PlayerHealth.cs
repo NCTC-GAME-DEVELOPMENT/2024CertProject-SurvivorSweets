@@ -3,8 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour, IHealth
-{
+public class PlayerHealth : MonoBehaviour, IHealth {
     public void DoDamage(float value) {
         Debug.Log("Did Damage to player");
     }
@@ -30,6 +29,10 @@ public class PlayerHealth : MonoBehaviour, IHealth
     }
 
     public void SetHealth(float value) {
+        throw new NotImplementedException();
+    }
+
+    public void SubscribeToOnDeath(Action method) {
         throw new NotImplementedException();
     }
 

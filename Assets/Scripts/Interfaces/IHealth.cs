@@ -16,4 +16,5 @@ public interface IHealth {
     public void SetHealth(float value);
     public bool IsAlive();
     public Action GetOnDeathEvent();
+    public void SubscribeToOnDeath(Action method);
 }

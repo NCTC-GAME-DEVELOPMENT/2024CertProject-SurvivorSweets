@@ -54,4 +54,8 @@ public class EnemyHealth : MonoBehaviour, IHealth {
     public Action GetOnDeathEvent() {
         return OnDeathEvent;
     }
+
+    public void SubscribeToOnDeath(Action method) {
+        OnDeathEvent += method;
+    }
 }
