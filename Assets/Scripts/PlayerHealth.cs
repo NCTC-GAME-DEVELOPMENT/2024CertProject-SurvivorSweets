@@ -4,8 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IHealth {
+    [SerializeField]
+    private float Health;
     public void DoDamage(float value) {
-        Debug.Log("Did Damage to player");
+        Health -= value;
+        if (Health <= 0) {
+            Debug.Log("Player Be dead");
+        }
     }
 
     public void DoDamageOverTime(float value, float timeInSeconds) {
@@ -13,11 +18,11 @@ public class PlayerHealth : MonoBehaviour, IHealth {
     }
 
     public void DoHeal(float value) {
-        throw new NotImplementedException();
+        Health += value;
     }
 
     public float GetHealth() {
-        throw new NotImplementedException();
+        return Health;
     }
 
     public Action GetOnDeathEvent() {
