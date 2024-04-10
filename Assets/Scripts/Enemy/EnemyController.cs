@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     private IHealth healthComponent;
     private INavigation navigationComponent;
     private IAttack attackComponent;
+    public float threatScore;
     public void Start() {
         healthComponent = GetComponent<IHealth>();
         navigationComponent = GetComponent<INavigation>();
@@ -38,7 +39,10 @@ public class EnemyController : MonoBehaviour
         navigationComponent.SubscribeToOnDistanceUpdate(attackComponent.UpdateDistanceToTarget);
             
     }
+    
+    
     public void Death() {
         this.gameObject.SetActive(false);
+        EnemySpawner.instance.RemoveFromCurrentList(this);
     }
 }

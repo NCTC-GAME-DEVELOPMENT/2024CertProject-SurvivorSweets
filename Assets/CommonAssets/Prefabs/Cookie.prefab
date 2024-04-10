@@ -108,8 +108,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 0.1}
-  m_Center: {x: 0, y: 0, z: 0.5}
+  m_Size: {x: 1, y: 14.887838, z: 1.0522707}
+  m_Center: {x: 0, y: 6.9439173, z: 0.023864627}
 --- !u!114 &9152720466048663746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,6 +165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a7ac3dba11aa124d8a6d8e814c1f897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  threatScore: 0
 --- !u!195 &4935624219164681625
 NavMeshAgent:
   m_ObjectHideFlags: 0
