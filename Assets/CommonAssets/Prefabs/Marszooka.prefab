@@ -156,7 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FireFromPoint: {fileID: 5143912179943092275}
-  projectilePrefab: {fileID: 3082128770858966576, guid: ddc8e55299ec1cf45bcd947c87974b2a, type: 3}
+  projectilePrefab: {fileID: 6841692512713741740, guid: c86e46245b47a9743979b7172923256b, type: 3}
 --- !u!1 &4794635821236777565
 GameObject:
   m_ObjectHideFlags: 0
