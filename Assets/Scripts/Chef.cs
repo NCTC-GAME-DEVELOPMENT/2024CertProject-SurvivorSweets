@@ -16,11 +16,13 @@ public class Chef : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        CurrentWeapon = GameObject.Instantiate(WeaponList[WeaponIndex], this.transform);
         InputPoller.instance.InputMovement += Movement;
 
         rb = GetComponent<Rigidbody>();
         InputPoller.instance.Input.PlayerCharacacter.WeaponNext.performed += NextWeapon;
         InputPoller.instance.Input.PlayerCharacacter.WeaponPrevious.performed += PrevWeapon;
+
     }
 
     // Update is called once per frame
@@ -54,7 +56,7 @@ public class Chef : MonoBehaviour
         {
             WeaponIndex = 0;
         }
-
+        if(CurrentWeapon is not null)
         Destroy(CurrentWeapon);
 
         CurrentWeapon = GameObject.Instantiate(WeaponList[WeaponIndex],this.transform);
@@ -71,9 +73,9 @@ public class Chef : MonoBehaviour
             WeaponIndex = (WeaponList.Count - 1);
         }
 
-        
 
-        Destroy(CurrentWeapon);
+        if (CurrentWeapon is not null)
+            Destroy(CurrentWeapon);
 
         CurrentWeapon = GameObject.Instantiate(WeaponList[WeaponIndex], this.transform);
     }
