@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class melee : MonoBehaviour
 {
-    public GameObject RollingPin;
+    public float Dam = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +29,7 @@ public class melee : MonoBehaviour
         if (health is not null)
         {
             Debug.Log("Hit" + other.gameObject.name);
-            health.DoDamage(2f);
+            health.DoDamage(Dam);
             
         }
     }
