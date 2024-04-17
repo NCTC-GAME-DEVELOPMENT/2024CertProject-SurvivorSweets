@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Chef : MonoBehaviour, IHealth {
     public List<GameObject> WeaponList;
@@ -73,7 +74,13 @@ public class Chef : MonoBehaviour, IHealth {
 
     private void Death()
     {
-
+        if (health <= 0)
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
+      
+   
+        
     }
 
     #region Health 
