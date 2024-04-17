@@ -21,6 +21,7 @@ public class EnemySpawner : MonoBehaviourSingleton<EnemySpawner> {
     private LayerMask layerMask;
     
     void Start() {
+        isPersistent = false;
         Random.InitState((int) DateTime.Now.Ticks);
         threatScore = 5;
         currentScore = 0;

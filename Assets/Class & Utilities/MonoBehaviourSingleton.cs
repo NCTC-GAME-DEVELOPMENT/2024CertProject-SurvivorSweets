@@ -5,6 +5,7 @@ namespace Hiyazcool
     {
         public class MonoBehaviourSingleton<T> : MonoBehaviour where T : MonoBehaviourSingleton<T>
         {
+            [SerializeField]
             protected bool isPersistent = true;
             [SerializeField]
             private bool debugLogCreation = false;
