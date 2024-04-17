@@ -94,6 +94,7 @@ public class Chef : MonoBehaviour, IHealth {
     private void CheckHealth() {
         if (health >= 0)
             return;
+        Death();
         Destroy(gameObject);
         Destroy(CurrentWeapon);
     }
