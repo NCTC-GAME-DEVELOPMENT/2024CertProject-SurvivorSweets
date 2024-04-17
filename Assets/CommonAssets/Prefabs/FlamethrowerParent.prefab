@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5645032412410598861}
+  - component: {fileID: 7081675212913526020}
   m_Layer: 0
   m_Name: FlamethrowerParent
   m_TagString: Untagged
@@ -25,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 962011582007317102}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.605, y: 1.579, z: -0.067}
+  m_LocalPosition: {x: 0.5, y: 1.7, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -36,6 +37,20 @@ Transform:
   - {fileID: 5604526114151945742}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7081675212913526020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 962011582007317102}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b6c1ff161236dc4bb9e990a32c73726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FireObject: {fileID: 3788861698384165289, guid: 40e20c53d1d4d2c4f83976bf740031ac, type: 3}
+  FireFromPoint: {fileID: 9172008180522642093}
 --- !u!1 &2570630307797097603
 GameObject:
   m_ObjectHideFlags: 0

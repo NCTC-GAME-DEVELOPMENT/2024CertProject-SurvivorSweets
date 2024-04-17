@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2424454112301402503}
   - component: {fileID: 6876196689075274146}
   - component: {fileID: -4483768483908426230}
+  - component: {fileID: 2014478104310147391}
   m_Layer: 0
   m_Name: Fire
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 3788861698384165289}
   serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 22.096386, y: 0.67, z: 45.66173}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3622,7 +3623,7 @@ ParticleSystem:
   CollisionModule:
     enabled: 0
     serializedVersion: 4
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -4841,5 +4842,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9400189a0156c54a8b11e7c24c00811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  lifeTime: 3
+  lifeTime: 1
+--- !u!136 &2014478104310147391
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3788861698384165289}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3.131614
+  m_Height: 6.263228
+  m_Direction: 0
+  m_Center: {x: 0, y: 7.838917e-15, z: 4.551614}

@@ -21,15 +21,16 @@ public class Flamethrower : MonoBehaviour
     }
 
     public void SpewFire(InputAction.CallbackContext context) {
-        StartCoroutine(FireCoroutine());
         isActive = true;
+        StartCoroutine(FireCoroutine());
     }
     public void StopSpewFire(InputAction.CallbackContext context) {
        isActive = false;
     }
     public IEnumerator FireCoroutine() {
+        Debug.Log("Gotta commit Warcrimess");
         while (isActive) {
-            Instantiate(FireObject, FireFromPoint.transform.position, FireFromPoint.transform.rotation);
+            Instantiate(FireObject, FireFromPoint.transform.position, FireFromPoint.transform.rotation, this.transform);
             yield return new WaitForSeconds(.25f);
             
         }
