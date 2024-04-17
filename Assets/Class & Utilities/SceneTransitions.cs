@@ -13,7 +13,7 @@ public class SceneTransitions : MonoBehaviour
 
     public void ToLevel1()
     {
-        SceneManager.LoadScene("LiveScene");
+        SceneManager.LoadScene("SampleScene");
     }
 
     public void ToGameOver()
