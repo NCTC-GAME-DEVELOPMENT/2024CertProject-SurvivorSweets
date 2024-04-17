@@ -76,7 +76,7 @@ public class Chef : MonoBehaviour, IHealth {
     {
         if (health <= 0)
         {
-            SceneManager.LoadScene("SampleScene");
+            SceneManager.LoadScene("GameOver");
         }
       
    
