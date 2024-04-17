@@ -14,6 +14,7 @@ public class SceneTransitions : MonoBehaviour
     public void ToLevel1()
     {
         SceneManager.LoadScene("SampleScene");
+        
     }
 
     public void ToGameOver()

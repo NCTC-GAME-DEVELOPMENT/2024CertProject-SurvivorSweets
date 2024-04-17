@@ -84,8 +84,8 @@ public class Chef : MonoBehaviour, IHealth {
     }
 
     #region Health 
-    [SerializeField]
-    private float health = 20;
+    
+    public float health = 20;
     public void DoDamage(float value) {
         health -= value;
         CheckHealth();

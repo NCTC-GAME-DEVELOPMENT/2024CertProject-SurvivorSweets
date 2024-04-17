@@ -25,6 +25,9 @@ public class melee : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "Player") {
+            return;
+        }
         IHealth health = other.GetComponent<IHealth>();
         if (health is not null)
         {
