@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a7ac3dba11aa124d8a6d8e814c1f897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  threatScore: 0
+  threatScore: 10
 --- !u!114 &6013247243857994002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8226f9bf2ca2c5849a336338e5260adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 3
+  attackRange: 2
   attackDamage: 5
   attackCooldown: 1
   isCloseEnoughToAttack: 0

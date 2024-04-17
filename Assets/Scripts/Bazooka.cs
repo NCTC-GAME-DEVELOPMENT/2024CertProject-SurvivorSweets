@@ -28,9 +28,9 @@ public class Bazooka : MonoBehaviour
     }
     public void FireMarsh(InputAction.CallbackContext context)
     {
-        Debug.Log(projectilePrefab);
-        Debug.Log(FireFromPoint.transform.rotation);
-        Debug.Log(FireFromPoint.transform.position);
+        //Debug.Log(projectilePrefab);
+        //Debug.Log(FireFromPoint.transform.rotation);
+        //Debug.Log(FireFromPoint.transform.position);
         Instantiate(projectilePrefab, FireFromPoint.transform.position, FireFromPoint.transform.rotation);
     }
     

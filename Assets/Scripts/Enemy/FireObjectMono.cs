@@ -5,8 +5,6 @@ using UnityEngine;
 public class FireObjectMono : MonoBehaviour
 {
     [SerializeField]
-    private float moveSpeed = 5f;
-    [SerializeField]
     private float lifeTime = 3f;
     Rigidbody rb;
     public void Start() {

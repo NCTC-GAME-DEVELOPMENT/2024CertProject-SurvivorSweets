@@ -42,7 +42,8 @@ public class EnemyController : MonoBehaviour
     
     
     public void Death() {
-        this.gameObject.SetActive(false);
-        EnemySpawner.instance.RemoveFromCurrentList(this);
+        //this.gameObject.SetActive(false);
+        EnemySpawner.instance.RemoveFromCurrentList(threatScore);
+        Destroy(gameObject);
     }
 }
