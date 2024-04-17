@@ -71,6 +71,11 @@ public class Chef : MonoBehaviour, IHealth {
         CurrentWeapon = GameObject.Instantiate(WeaponList[WeaponIndex], this.transform);
     }
 
+    private void Death()
+    {
+
+    }
+
     #region Health 
     [SerializeField]
     private float health = 20;

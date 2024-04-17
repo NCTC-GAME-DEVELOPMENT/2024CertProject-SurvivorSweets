@@ -25,8 +25,11 @@ public class StraightTrackingAI : MonoBehaviour, INavigation {
         StartCoroutine(CheckTarget());
     }
     public IEnumerator CheckTarget() {
+        if (TargetTransform is not null) {
+            
         Agent.SetDestination(TargetTransform.position);
         OnDistanceUpdate?.Invoke(Vector3.Distance(Agent.transform.position, TargetTransform.position));
+        }
         yield return new WaitForSeconds(CHECK_TARGET_WAIT);
         StartCoroutine(CheckTarget());
     }

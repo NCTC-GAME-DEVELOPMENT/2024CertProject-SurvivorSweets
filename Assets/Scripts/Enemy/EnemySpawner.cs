@@ -14,15 +14,13 @@ public class EnemySpawner : MonoBehaviourSingleton<EnemySpawner> {
     private Transform playerTransform;
     [SerializeField]
     private List<SpawnRates> spawnRates;
-    private List<EnemyController> enemies;
-    private List<EnemyController> inactiveEnemies;
     private float TotalWeight;
     [SerializeField]
     private LayerMask layerMask;
     
     void Start() {
         Random.InitState((int) DateTime.Now.Ticks);
-        threatScore = 30;
+        threatScore = 5;
         currentScore = 0;
         foreach (SpawnRates rates in spawnRates) {
             TotalWeight += rates.weight;
@@ -32,8 +30,7 @@ public class EnemySpawner : MonoBehaviourSingleton<EnemySpawner> {
     void Update() {
 
     }
-    private IEnumerator SpawnLoop() {
-        Debug.Log("SpawnLoop");
+    public IEnumerator SpawnLoop() {
         
         if (currentScore < threatScore) {
             int ran = Random.Range(4,8);
@@ -45,14 +42,14 @@ public class EnemySpawner : MonoBehaviourSingleton<EnemySpawner> {
         }
         Random.InitState((int) DateTime.Now.Ticks);
         yield return new WaitForSeconds(1);
-        SpawnLoop();
+        Debug.Log("SpawnLoop");
+        StartCoroutine(SpawnLoop());
     }
-    public void RemoveFromCurrentList(EnemyController enemyController) {
-        inactiveEnemies.Add(enemyController);
-        enemies.Remove(enemyController);
-        enemyController.gameObject.SetActive(false);
-        currentScore -= enemyController.threatScore;
-        threatScore += enemyController.threatScore;
+    public void RemoveFromCurrentList( float threatScore) {
+        
+        currentScore -= threatScore;
+        threatScore += threatScore;
+        
     }
     public void Spawn(int num) {
         for (int i = 0; i < num; i++) {
@@ -78,12 +75,12 @@ public class EnemySpawner : MonoBehaviourSingleton<EnemySpawner> {
             );
         if (GetRandomBool()) 
             spawnPoint.x *= -1;
-        Debug.Log(spawnPoint);
+        //Debug.Log(spawnPoint);
         if (GetRandomBool())
             spawnPoint.z *= -1;
         if (Physics.Raycast(spawnPoint, Vector3.down, 20, layerMask))
             return spawnPoint;
-        Debug.Log("Woo");
+        //Debug.Log("Woo");
 
         return GetSpawnPoint();
     }
