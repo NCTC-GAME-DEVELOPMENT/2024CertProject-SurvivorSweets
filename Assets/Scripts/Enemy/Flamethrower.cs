@@ -8,6 +8,7 @@ public class Flamethrower : MonoBehaviour
     [SerializeField]
     private GameObject FireObject;
     public GameObject FireFromPoint;
+    public GameObject FireCollider;
     private bool isActive;
     void Start()
     {
@@ -28,11 +29,12 @@ public class Flamethrower : MonoBehaviour
        isActive = false;
     }
     public IEnumerator FireCoroutine() {
-        Debug.Log("Gotta commit Warcrimess");
         while (isActive) {
             Instantiate(FireObject, FireFromPoint.transform.position, FireFromPoint.transform.rotation, this.transform);
+            FireCollider.SetActive(true);
             yield return new WaitForSeconds(.25f);
             
         }
+        FireCollider.SetActive(false);
     }
 }

@@ -22,6 +22,7 @@ public class EnemyHealth : MonoBehaviour, IHealth {
             DoDamage(tickDamage);
             yield return new WaitForSeconds(0.2f);
         }
+        Debug.Log("Damage Over Time");
     }
 
     public void DoHeal(float value) {
@@ -57,5 +58,8 @@ public class EnemyHealth : MonoBehaviour, IHealth {
 
     public void SubscribeToOnDeath(Action method) {
         OnDeathEvent += method;
+    }
+    public void OnDestroy() {
+        StopAllCoroutines();
     }
 }

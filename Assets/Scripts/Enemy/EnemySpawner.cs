@@ -45,7 +45,7 @@ public class EnemySpawner : MonoBehaviourSingleton<EnemySpawner> {
         }
         Random.InitState((int) DateTime.Now.Ticks);
         yield return new WaitForSeconds(1);
-        Debug.Log("SpawnLoop");
+        //Debug.Log("SpawnLoop");
         StartCoroutine(SpawnLoop());
     }
     public void RemoveFromCurrentList(float _threatScore) {
