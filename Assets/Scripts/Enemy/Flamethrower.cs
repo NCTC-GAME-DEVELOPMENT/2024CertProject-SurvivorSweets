@@ -14,7 +14,7 @@ public class Flamethrower : MonoBehaviour
     {
         InputPoller.instance.Input.PlayerCharacacter.Attack.started += SpewFire;
         InputPoller.instance.Input.PlayerCharacacter.Attack.canceled += StopSpewFire;
-
+        FireCollider.SetActive(false);
     }
     private void OnDestroy() {
         InputPoller.instance.Input.PlayerCharacacter.Attack.started -= SpewFire;

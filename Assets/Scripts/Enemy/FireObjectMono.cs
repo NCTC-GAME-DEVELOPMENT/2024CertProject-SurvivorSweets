@@ -30,7 +30,7 @@ public class FireObjectMono : MonoBehaviour {
                 Debug.Log("Enemy " + other.name);
                 IHealth health = other.GetComponent<IHealth>();
                 if (health != null) {
-                    health.DoDamageOverTime(1, 5);
+                    health.DoDamageOverTime(2, 5);
                     Debug.Log("Trying Damage");
                 }
             }

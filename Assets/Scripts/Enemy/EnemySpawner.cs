@@ -28,6 +28,7 @@ public class EnemySpawner : MonoBehaviourSingleton<EnemySpawner> {
         foreach (SpawnRates rates in spawnRates) {
             TotalWeight += rates.weight;
         }
+        StartCoroutine(CakeSpawn());
         StartCoroutine(SpawnLoop());
     }
     void Update() {
@@ -47,6 +48,18 @@ public class EnemySpawner : MonoBehaviourSingleton<EnemySpawner> {
         yield return new WaitForSeconds(1);
         //Debug.Log("SpawnLoop");
         StartCoroutine(SpawnLoop());
+    }
+    public IEnumerator CakeSpawn() {
+        yield return new WaitForSeconds(30);
+        Vector3 spawn = GetSpawnPoint();
+        if (spawn == Vector3.zero) {
+            spawn = GetSpawnPoint();
+            if (spawn == Vector3.zero)
+                spawn = GetSpawnPoint();
+        }
+        GameObject enemy = GameObject.Instantiate(spawnRates[2].spawn, spawn ,Quaternion.identity, this.transform);
+        currentScore += enemy.GetComponent<EnemyController>().threatScore;
+        StartCoroutine (CakeSpawn());
     }
     public void RemoveFromCurrentList(float _threatScore) {
         
