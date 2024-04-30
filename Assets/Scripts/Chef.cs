@@ -11,11 +11,16 @@ public class Chef : MonoBehaviour, IHealth {
     public float MoveSpeed = 10;
     public float rotationRate = 100;
     public GameObject CurrentWeapon;
+    [Header("Sounds")]
+    public AudioBite HurtSound;
+    public AudioBite DeathSound;
 
     Rigidbody rb;
 
     // Start is called before the first frame update
     void Start() {
+        HurtSound.Init(gameObject);
+        DeathSound.Init(gameObject);
         CurrentWeapon = GameObject.Instantiate(WeaponList[WeaponIndex], this.transform);
         InputPoller.instance.InputMovement += Movement;
 
@@ -76,6 +81,7 @@ public class Chef : MonoBehaviour, IHealth {
     {
         if (health <= 0)
         {
+            DeathSound.Play();
             SceneManager.LoadScene("GameOver");
         }
       
@@ -88,15 +94,18 @@ public class Chef : MonoBehaviour, IHealth {
     public float health = 20;
     public void DoDamage(float value) {
         health -= value;
-        CheckHealth();
+        if (CheckHealth())
+            HurtSound.Play();
+        
     }
 
-    private void CheckHealth() {
+    private bool CheckHealth() {
         if (health >= 0)
-            return;
+            return true;
         Death();
         Destroy(gameObject);
         Destroy(CurrentWeapon);
+        return false;
     }
 
     public void DoHeal(float value) {
