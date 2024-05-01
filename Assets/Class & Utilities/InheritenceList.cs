@@ -3,8 +3,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.UIElements;
+#endif
 using UnityEngine;
 using UnityEngine.UIElements;
 [Serializable]
@@ -70,6 +72,7 @@ public class CList<T> : IList<T>, IReadOnlyCollection<T> {
     }
 
 }
+#if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(CList<>), true)]
 public class InheritenceListPropertyDrawer : PropertyDrawer {
     public override VisualElement CreatePropertyGUI(SerializedProperty property) {
@@ -105,4 +108,6 @@ public class InheritenceListPropertyDrawer : PropertyDrawer {
         );
         return element;
     }
+
 }
+#endif

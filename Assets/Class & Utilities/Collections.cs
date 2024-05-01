@@ -5,11 +5,12 @@ using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using Unity.Mathematics;
 using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
-
+#if UNITY_EDITOR
+using UnityEditor;
+using UnityEditor.UIElements;
+#endif
 namespace Hiyazcool {
     namespace Collections {
         /* need To Seperate out Files

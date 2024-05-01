@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -92,3 +93,4 @@ namespace Hiyazcool
         public static SerializedProperty DuplicateProperty(SerializedProperty property, int index) => DuplicateProperty(property, property.GetArrayElementAtIndex(index).managedReferenceValue.GetType());            
     }
 }
+#endif

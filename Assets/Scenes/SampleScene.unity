@@ -372,10 +372,10 @@ MonoBehaviour:
   currentScore: 0
   playerTransform: {fileID: 588104858}
   spawnRates:
-  - weight: 50
+  - weight: 65
     threatScore: 4
     spawn: {fileID: 6711112905555261459, guid: 85a8518962f38414a9935d8874a5a11f, type: 3}
-  - weight: 35
+  - weight: 20
     threatScore: 4
     spawn: {fileID: 2533064335133814678, guid: 26dbfd4511ad5f149ba17ee83ba98dea, type: 3}
   - weight: 5
