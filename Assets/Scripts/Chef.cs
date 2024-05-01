@@ -35,6 +35,7 @@ public class Chef : MonoBehaviour, IHealth {
 
     }
     public void Movement(Vector2 input) {
+        /*
         gameObject.transform.Rotate(Vector3.up * (rotationRate * input.x * Time.deltaTime));
 
 
@@ -46,6 +47,24 @@ public class Chef : MonoBehaviour, IHealth {
 
         if (rb) {
             rb.velocity = gameObject.transform.forward * (MoveSpeed * usevalue);
+        }
+        */
+
+        Vector3 movevector = Vector3.zero;
+        // Z Global is moving on Screen X Axis 
+        // X Global is moving on Screen Y Axis but flipped
+        movevector.x = -input.y;
+        movevector.z = input.x;
+
+        if (input.magnitude > 0)
+        {
+            gameObject.transform.forward = movevector; 
+        }
+
+  
+        if (rb)
+        {
+            rb.velocity = (MoveSpeed * movevector);
         }
 
     }
