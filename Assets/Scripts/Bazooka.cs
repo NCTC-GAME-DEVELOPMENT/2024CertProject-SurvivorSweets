@@ -7,13 +7,14 @@ public class Bazooka : MonoBehaviour
 {
     public GameObject FireFromPoint;
     public GameObject projectilePrefab;
+    public AudioBite FireSound;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        FireSound.Init(gameObject);    
         InputPoller.instance.Input.PlayerCharacacter.Attack.performed += FireMarsh;
     }
 
@@ -32,6 +33,7 @@ public class Bazooka : MonoBehaviour
         //Debug.Log(FireFromPoint.transform.rotation);
         //Debug.Log(FireFromPoint.transform.position);
         Instantiate(projectilePrefab, FireFromPoint.transform.position, FireFromPoint.transform.rotation);
+        FireSound.Play();
     }
     
 }

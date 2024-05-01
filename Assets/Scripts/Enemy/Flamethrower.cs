@@ -9,9 +9,11 @@ public class Flamethrower : MonoBehaviour
     private GameObject FireObject;
     public GameObject FireFromPoint;
     public GameObject FireCollider;
+    public AudioBite FireSound;
     private bool isActive;
     void Start()
     {
+        FireSound.Init(gameObject);
         InputPoller.instance.Input.PlayerCharacacter.Attack.started += SpewFire;
         InputPoller.instance.Input.PlayerCharacacter.Attack.canceled += StopSpewFire;
         FireCollider.SetActive(false);
@@ -24,6 +26,7 @@ public class Flamethrower : MonoBehaviour
     public void SpewFire(InputAction.CallbackContext context) {
         isActive = true;
         StartCoroutine(FireCoroutine());
+        StartCoroutine(SoundCoroutine());
     }
     public void StopSpewFire(InputAction.CallbackContext context) {
        isActive = false;
@@ -37,4 +40,11 @@ public class Flamethrower : MonoBehaviour
         }
         FireCollider.SetActive(false);
     }
+    public IEnumerator SoundCoroutine() {
+        while (isActive) {
+            FireSound.Play();
+            yield return new WaitForSeconds(FireSound.GetClipLength());
+        }
+    }
+
 }
