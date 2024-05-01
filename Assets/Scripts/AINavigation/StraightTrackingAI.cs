@@ -21,7 +21,7 @@ public class StraightTrackingAI : MonoBehaviour, INavigation {
                 throw new System.Exception("No Target, or Player for " + this.gameObject.name);
             }
         
-        Agent.stoppingDistance = 3f;
+        Agent.stoppingDistance = 2f;
         StartCoroutine(CheckTarget());
     }
     public IEnumerator CheckTarget() {

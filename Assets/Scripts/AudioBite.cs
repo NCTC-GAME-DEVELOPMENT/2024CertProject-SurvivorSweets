@@ -29,6 +29,10 @@ public class AudioBite
         source.clip = audio;
        
     }
-    public float GetClipLength() => audio.length;
+    public float GetClipLength() {
+        if (audio == null)
+            return 0f;
+        return audio.length;
+    }
     
 }

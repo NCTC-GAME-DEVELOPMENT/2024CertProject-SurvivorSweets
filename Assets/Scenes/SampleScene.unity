@@ -230,6 +230,10 @@ PrefabInstance:
       value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1055267789291082836, guid: b4499dd0f9c1ab04b8ae3cd4de3e3cac, type: 3}
+      propertyPath: rotationRate
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 1055267789291082836, guid: b4499dd0f9c1ab04b8ae3cd4de3e3cac, type: 3}
       propertyPath: WeaponList.Array.size
       value: 4
       objectReference: {fileID: 0}
@@ -460,6 +464,22 @@ PrefabInstance:
     - target: {fileID: 888616125153228635, guid: b22d76d4c9166294e907b2e077123bf9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1913204200271635605, guid: b22d76d4c9166294e907b2e077123bf9, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5061916754779002215, guid: b22d76d4c9166294e907b2e077123bf9, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361402950223551385, guid: b22d76d4c9166294e907b2e077123bf9, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6631896891466605415, guid: b22d76d4c9166294e907b2e077123bf9, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9190413560465080978, guid: b22d76d4c9166294e907b2e077123bf9, type: 3}
       propertyPath: m_Name

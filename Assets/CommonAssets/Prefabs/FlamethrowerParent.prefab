@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6053993294490647211}
   - component: {fileID: 3772604851908079086}
   - component: {fileID: 350269847430384267}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,7 +68,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9400189a0156c54a8b11e7c24c00811, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeTime: 3
   fireCollider: {fileID: 3772604851908079086}
 --- !u!1 &962011582007317102
 GameObject:
@@ -80,7 +79,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5645032412410598861}
   - component: {fileID: 1261337054768125167}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FlamethrowerParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +95,7 @@ Transform:
   m_GameObject: {fileID: 962011582007317102}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.07, y: 0, z: 0.39}
+  m_LocalPosition: {x: 0.31, y: 0, z: 0.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -123,6 +122,10 @@ MonoBehaviour:
   FireObject: {fileID: 3788861698384165289, guid: 40e20c53d1d4d2c4f83976bf740031ac, type: 3}
   FireFromPoint: {fileID: 9172008180522642093}
   FireCollider: {fileID: 411741184573378013}
+  FireSound:
+    audio: {fileID: 0}
+    volume: 0
+    pitch: 0
 --- !u!1 &2570630307797097603
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,8 +137,7 @@ GameObject:
   - component: {fileID: 4203730966362686897}
   - component: {fileID: 7134852040653190022}
   - component: {fileID: 1115532029576106027}
-  - component: {fileID: 3819885752231257727}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,29 +209,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &3819885752231257727
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2570630307797097603}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &3940413173228552977
 GameObject:
   m_ObjectHideFlags: 0
@@ -241,8 +220,7 @@ GameObject:
   - component: {fileID: 4647792602388439758}
   - component: {fileID: 6929597099573517959}
   - component: {fileID: 3953891175974454356}
-  - component: {fileID: 5107224378992026622}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,29 +292,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5107224378992026622
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3940413173228552977}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &4342025568473295367
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,8 +303,7 @@ GameObject:
   - component: {fileID: 2066524189477553077}
   - component: {fileID: 1924250602580483449}
   - component: {fileID: 3124707783603703193}
-  - component: {fileID: 4929634197747729934}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -421,29 +375,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &4929634197747729934
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4342025568473295367}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &4923903285751322101
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,8 +386,7 @@ GameObject:
   - component: {fileID: 4057334979733865683}
   - component: {fileID: 3804022945149098087}
   - component: {fileID: 570820741654069506}
-  - component: {fileID: 5821010856706349014}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -528,29 +458,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5821010856706349014
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4923903285751322101}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &9172008180522642093
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,7 +467,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5604526114151945742}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FireFromPoint
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}

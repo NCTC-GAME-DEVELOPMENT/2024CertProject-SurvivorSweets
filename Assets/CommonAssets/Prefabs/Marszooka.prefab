@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 417171906793530310}
   - component: {fileID: 3531267742314285801}
   - component: {fileID: 1067978920759318116}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7074662207895886196}
   - component: {fileID: 4087595278187162610}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Marszooka
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,6 +157,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FireFromPoint: {fileID: 5143912179943092275}
   projectilePrefab: {fileID: 6841692512713741740, guid: c86e46245b47a9743979b7172923256b, type: 3}
+  FireSound:
+    audio: {fileID: 0}
+    volume: 0
+    pitch: 0
 --- !u!1 &4794635821236777565
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +173,7 @@ GameObject:
   - component: {fileID: 2882078134208303347}
   - component: {fileID: 3014990506081535500}
   - component: {fileID: 8835289687082809600}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -273,7 +277,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7126017056427214960}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: FireFromPoint
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -307,7 +311,7 @@ GameObject:
   - component: {fileID: 3930547670354097808}
   - component: {fileID: 5895400853128671070}
   - component: {fileID: 7889420490609402987}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
