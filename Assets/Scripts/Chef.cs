@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Chef : MonoBehaviour, IHealth {
     public List<GameObject> WeaponList;
@@ -16,6 +17,7 @@ public class Chef : MonoBehaviour, IHealth {
     public AudioBite DeathSound;
 
     Rigidbody rb;
+    public Camera cam;
 
     // Start is called before the first frame update
     void Start() {
@@ -32,7 +34,10 @@ public class Chef : MonoBehaviour, IHealth {
 
     // Update is called once per frame
     void Update() {
-
+        Vector3 mouseVector = Input.mousePosition;
+        mouseVector -= cam.WorldToScreenPoint(this.transform.position);
+        float angle = Mathf.Atan2(mouseVector.y, mouseVector.x) * Mathf.Rad2Deg;
+        Debug.Log(angle);
     }
     public void Movement(Vector2 input) {
         /*
@@ -55,7 +60,6 @@ public class Chef : MonoBehaviour, IHealth {
         // X Global is moving on Screen Y Axis but flipped
         movevector.x = -input.y;
         movevector.z = input.x;
-
         if (input.magnitude > 0)
         {
             gameObject.transform.forward = movevector; 
@@ -111,8 +115,9 @@ public class Chef : MonoBehaviour, IHealth {
     #region Health 
     
     public float health = 20;
+    public Slider slider;
     public void DoDamage(float value) {
-        health -= value;
+        SetHealth(health - value);
         if (CheckHealth())
             HurtSound.Play();
         
@@ -128,7 +133,7 @@ public class Chef : MonoBehaviour, IHealth {
     }
 
     public void DoHeal(float value) {
-        health += value;
+        SetHealth(health + value);
     }
 
     public float GetHealth() {
@@ -141,6 +146,7 @@ public class Chef : MonoBehaviour, IHealth {
 
     public void SetHealth(float value) {
         health = value;
+        slider.value = value;
     }
 
     public bool IsAlive() {
