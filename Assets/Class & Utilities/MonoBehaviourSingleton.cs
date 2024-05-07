@@ -16,7 +16,7 @@ namespace Hiyazcool
                     Debug.Log("Creating");
                 if (instance != null && instance != this)
                 {
-                    Destroy(this);
+                    Destroy(gameObject);
                     throw new System.Exception("An instance of this singleton already exists.");
                 }
                 else

@@ -6,5 +6,5 @@ using Hiyazcool.Unity;
 
 public class MuiscManager : MonoBehaviourSingleton<MuiscManager>
 {
-    public bool RandomBool;
+    
 }

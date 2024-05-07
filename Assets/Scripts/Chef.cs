@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -34,13 +35,18 @@ public class Chef : MonoBehaviour, IHealth {
 
     // Update is called once per frame
     void Update() {
+        ////Debug.Log(Input.mousePosition);
+        //Vector3 mouseVector = cam.ViewportToWorldPoint (Input.mousePosition);
+        //Debug.Log(mouseVector);
+        //transform.LookAt(new Vector3(mouseVector.x, this.transform.position.y, mouseVector.z));
         Vector3 mouseVector = Input.mousePosition;
         mouseVector -= cam.WorldToScreenPoint(this.transform.position);
         float angle = Mathf.Atan2(mouseVector.y, mouseVector.x) * Mathf.Rad2Deg;
         Debug.Log(angle);
+        transform.rotation = Quaternion.Euler(0, -angle, 0); 
     }
     public void Movement(Vector2 input) {
-        /*
+        /*  
         gameObject.transform.Rotate(Vector3.up * (rotationRate * input.x * Time.deltaTime));
 
 
@@ -62,7 +68,7 @@ public class Chef : MonoBehaviour, IHealth {
         movevector.z = input.x;
         if (input.magnitude > 0)
         {
-            gameObject.transform.forward = movevector; 
+            //gameObject.transform.forward = movevector; 
         }
 
   

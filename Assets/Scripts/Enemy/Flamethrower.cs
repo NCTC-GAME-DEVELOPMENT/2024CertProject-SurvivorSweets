@@ -11,8 +11,10 @@ public class Flamethrower : MonoBehaviour
     public GameObject FireCollider;
     public AudioBite FireSound;
     private bool isActive;
+    private PlayerFuel fuel;
     void Start()
     {
+        fuel = GetComponentInParent<PlayerFuel>();
         FireSound.Init(gameObject);
         InputPoller.instance.Input.PlayerCharacacter.Attack.started += SpewFire;
         InputPoller.instance.Input.PlayerCharacacter.Attack.canceled += StopSpewFire;
@@ -32,13 +34,16 @@ public class Flamethrower : MonoBehaviour
        isActive = false;
     }
     public IEnumerator FireCoroutine() {
+            fuel.StopAllCoroutines();
         while (isActive) {
-            Instantiate(FireObject, FireFromPoint.transform.position, FireFromPoint.transform.rotation, this.transform);
-            FireCollider.SetActive(true);
+            if (fuel.UseFuel(2)) {
+                Instantiate(FireObject, FireFromPoint.transform.position, FireFromPoint.transform.rotation, this.transform);
+                FireCollider.SetActive(true);
+            }
             yield return new WaitForSeconds(.25f);
-            
         }
         FireCollider.SetActive(false);
+        fuel.StartRegen(4);
     }
     public IEnumerator SoundCoroutine() {
         while (isActive) {
