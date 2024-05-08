@@ -319,7 +319,7 @@ MonoBehaviour:
   debugLogCreation: 0
   threatScore: 0
   currentScore: 0
-  playerTransform: {fileID: 0}
+  playerTransform: {fileID: 1474244019}
   spawnRates:
   - weight: 65
     threatScore: 4
